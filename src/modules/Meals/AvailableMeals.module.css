@@ -11,6 +11,10 @@
   padding: 0;
 }
 
+.meals-font {
+  color: grey;
+}
+
 @keyframes meals-appear {
   from {
     opacity: 0;
