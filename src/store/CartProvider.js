@@ -39,17 +39,12 @@ const cartReducer = (state, action) => {
     const existingCartItemIndex = state.items.findIndex(
       item => item.id === action.id
     );
-    console.log('ini state itemsnya', state.items, action.id)
-    console.log('ini state index', existingCartItemIndex)
     const existingItem = state.items[existingCartItemIndex];
-    console.log('ini exi', existingItem)
     const updatedTotalAmount = state.totalAmount - existingItem.price;
 
     let updatedItems;
     if (existingItem.amount === 1) {
-      console.log('ini masuk if', updatedItems)
       updatedItems = state.items.filter(item => item.id !== action.id)
-      console.log('ini masuk if 2', updatedItems, state.items.filter(item => item.id !== action.id))
     } else {
       const updatedItem = { ...existingItem, amount: existingItem.amount - 1 };
       updatedItems = [ ...state.items];
