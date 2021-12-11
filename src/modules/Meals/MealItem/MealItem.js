@@ -3,16 +3,17 @@ import { useContext } from 'react';
 import MealItemForm from './MealItemForm';
 import classes from './MealItem.module.css';
 import CartContext from '../../../store/cart-context';
+import { convertToRupiah } from '../../Cart/utils';
 
 const MealItem = (props) => {
   const cartCtx = useContext(CartContext);
 
-  const price = `Rp. ${props.price.toFixed(3)}`;
-  const addToCartHandler = amount => {
+  const price = convertToRupiah(props.price);
+  const addToCartHandler = quantity => {
     cartCtx.addItem({
       id: props.id,
       name: props.name,
-      amount: amount,
+      quantity: quantity,
       price: props.price,
     })
   };

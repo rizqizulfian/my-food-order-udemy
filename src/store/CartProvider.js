@@ -9,7 +9,7 @@ const defaultCartState = {
 const cartReducer = (state, action) => {
   // disini si action ada 2 obj, type = pembeda jenisnya, item adalah itemnya
   if (action.type === 'ADD_CART_ITEM') {
-    const updatedTotalAmount = state.totalAmount + action.item.price * action.item.amount;
+    const updatedTotalAmount = state.totalAmount + action.item.price * action.item.quantity;
 
     // code to process if the same item is already in cart
     const existingCartItemIndex = state.items.findIndex(
@@ -21,7 +21,7 @@ const cartReducer = (state, action) => {
     if (existingCartItem) {
       const updatedItem = {
         ...existingCartItem,
-        amount: existingCartItem.amount + action.item.amount,
+        quantity: existingCartItem.quantity + action.item.quantity,
       }
       updatedItems = [...state.items];
       updatedItems[existingCartItemIndex] = updatedItem;
@@ -43,10 +43,10 @@ const cartReducer = (state, action) => {
     const updatedTotalAmount = state.totalAmount - existingItem.price;
 
     let updatedItems;
-    if (existingItem.amount === 1) {
+    if (existingItem.quantity === 1) {
       updatedItems = state.items.filter(item => item.id !== action.id)
     } else {
-      const updatedItem = { ...existingItem, amount: existingItem.amount - 1 };
+      const updatedItem = { ...existingItem, quantity: existingItem.quantity - 1 };
       updatedItems = [ ...state.items];
       updatedItems[existingCartItemIndex] = updatedItem;
     }
