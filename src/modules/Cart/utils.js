@@ -82,6 +82,6 @@ export const constructReqPayload = data => {
 export const convertToRupiah = nominal => {
   var rupiah = '';
   var angkarev = nominal.toString().split('').reverse().join('');
-  for (var i = 0; i < angkarev.length; i++) if (i % 3 == 0) rupiah += angkarev.substr(i, 3) + '.';
+  for (var i = 0; i < angkarev.length; i++) if (i % 3 === 0) rupiah += angkarev.substr(i, 3) + '.';
   return 'Rp. ' + rupiah.split('', rupiah.length - 1).reverse().join('');
 };
