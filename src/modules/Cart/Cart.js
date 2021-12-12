@@ -90,6 +90,8 @@ const Cart = props => {
   const didSubmitModalContent = (
     <React.Fragment>
       <p>Successfully sent the order!</p>
+      <p>Please wait a second, pop up will be shown for your payment.</p>
+      <p>Thankyou :)</p>
       <div className={classes.actions}>
       <button className={classes.button} onClick={props.onClose}>
         Close
